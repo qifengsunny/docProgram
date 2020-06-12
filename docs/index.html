@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="./vue.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'datasim 开发手册',
+      repo: '',
+      loadNavbar: true,
+      loadSidebar: true,
+      coverpage:true,
+      onlyCover:true,
+      subMaxLevel: 3,
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      plugins: [
+          function(hook, vm) {
+              hook.beforeEach(function (html) {
+                  var url = 'http://172.30.65.141:8888/qifeng/docdatasim/tree/master/docs/' + vm.route.file
+                  var editHtml = '[📝 EDIT DOCUMENT](' + url + ')\n'
+                  var editHtml_end = '[🖊 Edit Document](' + url + ')\n'
+                  return editHtml
+                      + html
+                      + '\n----\n'
+                      + '> Last Modified {docsify-updated} '
+                      + editHtml_end
+              })
+          }
+      ]
+    }
+  </script>
+
+  <script src="./docsify.min.js"></script>
+</body>
+</html>
